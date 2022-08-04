@@ -1,0 +1,36 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+}
+
+group = 'com.bosch'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.microsoft.azure.sdk.iot:iot-device-client:2.0.5'
+    implementation 'com.microsoft.azure.sdk.iot.provisioning.security:x509-provider:2.0.1'
+    implementation 'com.microsoft.azure.sdk.iot.provisioning:provisioning-device-client:2.0.1'
+    implementation 'org.bouncycastle:bcmail-jdk18on:1.71'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.71'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
