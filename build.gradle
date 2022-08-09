@@ -25,6 +25,9 @@ dependencies {
     implementation 'com.microsoft.azure.sdk.iot.provisioning:provisioning-device-client:2.0.1'
     implementation 'org.bouncycastle:bcmail-jdk18on:1.71'
     implementation 'org.bouncycastle:bcprov-jdk18on:1.71'
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
