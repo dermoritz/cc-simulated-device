@@ -5,20 +5,19 @@ import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.provisioning.device.ProvisioningDeviceClientRegistrationResult;
 import com.microsoft.azure.sdk.iot.provisioning.device.ProvisioningDeviceClientStatus;
 import com.microsoft.azure.sdk.iot.provisioning.security.SecurityProvider;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
-@Component
+@Configuration
 @Slf4j
 public class SimulatedDevice {
 
-    @Getter
     private final DeviceClient device;
 
     public SimulatedDevice(ProvisioningDeviceService provsioning, SecurityProvider securityProvider){
@@ -34,6 +33,11 @@ public class SimulatedDevice {
         } catch (IOException e) {
             throw new IllegalStateException("Problem creating device: ", e);
         }
+    }
+
+    @Bean
+    public DeviceClient getDevice(){
+        return device;
     }
 
 }
